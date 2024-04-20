@@ -2,6 +2,7 @@ var express = require('express')
 var router =  express.Router()
 
 router.get("/get-std",(req,res,next)=>{
+    
     res.send("get the student")
 
 })
@@ -20,11 +21,14 @@ router.delete("/delete-std/:name/:age",(req,res,next)=>{
 
 })
 router.post("/login",(req,res,next)=>{
-    res.send("login the student")
+   const data =  req.body.data
+    res.send(`${data.name} and ${data.age}`)
 
 })
 router.put("/put-std",(req,res,next)=>{
-    res.send("update the student")
+  const name=  req.headers.name
+  const age = req.headers.age
+    res.send(`my name is ${name} ,my  age ${age}`)
 
 })
 module.exports = router;
